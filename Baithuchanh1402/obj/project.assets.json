@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ngxtu\\OneDrive\\Máy tính\\Dotnet core\\MvcMovie\\MvcMovie.csproj",
+      "projectUniqueName": "C:\\Users\\ngxtu\\OneDrive\\Máy tính\\Dotnet core\\Baithuchanh1402\\MvcMovie.csproj",
       "projectName": "MvcMovie",
-      "projectPath": "C:\\Users\\ngxtu\\OneDrive\\Máy tính\\Dotnet core\\MvcMovie\\MvcMovie.csproj",
+      "projectPath": "C:\\Users\\ngxtu\\OneDrive\\Máy tính\\Dotnet core\\Baithuchanh1402\\MvcMovie.csproj",
       "packagesPath": "C:\\Users\\ngxtu\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ngxtu\\OneDrive\\Máy tính\\Dotnet core\\MvcMovie\\obj\\",
+      "outputPath": "C:\\Users\\ngxtu\\OneDrive\\Máy tính\\Dotnet core\\Baithuchanh1402\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ngxtu\\AppData\\Roaming\\NuGet\\NuGet.Config",
