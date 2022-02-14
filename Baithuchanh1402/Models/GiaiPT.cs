@@ -1,10 +1,9 @@
-//write program solve equations of degree 1 and 2
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-//solve equations of degree 1 and 2
+
 namespace Models
 {
     public class GiaiPT
