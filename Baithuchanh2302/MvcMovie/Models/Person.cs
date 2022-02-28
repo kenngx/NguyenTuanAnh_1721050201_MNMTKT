@@ -12,5 +12,7 @@ namespace MvcMovie.models{
         [MaxLength(50)]
         [Required]
         public string PersonName { get; set; }
+        public string Address { get; set; }
+        
     }
 }

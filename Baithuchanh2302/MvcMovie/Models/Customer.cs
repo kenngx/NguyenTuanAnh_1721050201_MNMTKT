@@ -3,15 +3,15 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MvcMovie.models{
-    [Table("Students")]
-    public class student{
+    public class customer:Person{
         [StringLength(50)]
         [Key]
-        public string StudentID { get; set; }
+        public string CustomerID { get; set; }
         [MinLength(3)]
         [MaxLength(50)]
         [Required]
-        public string StudentName { get; set; }
-        public string Address { get; set; }
+        public string Email { get; set; }
+        public string Gender { get; set; }
+        public string Birthday { get; set; }
     }
 }
