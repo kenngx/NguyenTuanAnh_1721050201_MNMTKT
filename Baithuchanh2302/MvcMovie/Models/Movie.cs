@@ -1,9 +1,11 @@
 using System.ComponentModel.DataAnnotations;
+using System;
 
 namespace MvcMovie.Models
 {
     public class Movie
     {
+        [Key]
         public int Id { get; set; }
         public string? Title { get; set; }
 

@@ -1,17 +1,16 @@
 using System;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
-namespace MvcMovie.models{
-    [Table("Employees")]
-    public class Employee{
-        [StringLength(50)]
+namespace MvcMovie{
+    public class Employee
+    {
         [Key]
+        [Display(Name ="Mã Nhân Viên")]
         public string EmployeeID { get; set; }
-        [MinLength(3)]
-        [MaxLength(50)]
+
         [Required]
+        [Display(Name ="Tên Nhân Viên")]
         public string EmployeeName { get; set; }
-        public string Address { get; set; } 
+        public string Address { get; set; }
     }
 }
