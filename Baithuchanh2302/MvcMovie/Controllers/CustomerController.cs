@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MvcMovie;
 using MvcMovie.Models;
-
+using MvcMovie.Service;
 
 namespace MvcMovie.Controllers
 {
@@ -16,17 +16,23 @@ namespace MvcMovie.Controllers
         private readonly MvcMovieContext _context;
         AutoGenerateKey Aukey = new AutoGenerateKey();
 
-    
+     ICustomerService _CustomerService = null;
+        List<Customer> _customers = new List<Customer>();
 
-        public CustomerController(MvcMovieContext context)
+        public CustomerController(ICustomerService customerService)
         {
-            _context = context;
+            _CustomerService = customerService;
+        }
+        public JsonResult SaveCustomer(List<Customer> Customers)
+        {
+            _customers = _CustomerService.SaveCustomers(Customers);
+            return Json(_customers);
         }
 
         // GET: Customer
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Customer.ToListAsync());
+            return View(await _context.Customers.ToListAsync());
         }
 
         // GET: Customer/Details/5
@@ -37,7 +43,7 @@ namespace MvcMovie.Controllers
                 return NotFound();
             }
 
-            var customer = await _context.Customer
+            var customer = await _context.Customers
                 .FirstOrDefaultAsync(m => m.PersonID == id);
             if (customer == null)
             {
@@ -51,8 +57,8 @@ namespace MvcMovie.Controllers
         public IActionResult Create()
         {
             string NewID = "";
-            var emp = _context.Person.ToList().OrderByDescending(c => c.PersonID); // lay danh sach person theo ID lon nhat
-            var countEmployee = _context.Person.Count(); 
+            var emp = _context.Persons.ToList().OrderByDescending(c => c.PersonID); // lay danh sach person theo ID lon nhat
+            var countEmployee = _context.Persons.Count(); 
 
             if (countEmployee == 0)
             {
@@ -91,7 +97,7 @@ namespace MvcMovie.Controllers
                 return NotFound();
             }
 
-            var customer = await _context.Customer.FindAsync(id);
+            var customer = await _context.Customers.FindAsync(id);
             if (customer == null)
             {
                 return NotFound();
@@ -142,7 +148,7 @@ namespace MvcMovie.Controllers
                 return NotFound();
             }
 
-            var customer = await _context.Customer
+            var customer = await _context.Customers
                 .FirstOrDefaultAsync(m => m.PersonID == id);
             if (customer == null)
             {
@@ -157,15 +163,15 @@ namespace MvcMovie.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            var customer = await _context.Customer.FindAsync(id);
-            _context.Customer.Remove(customer);
+            var customer = await _context.Customers.FindAsync(id);
+            _context.Customers.Remove(customer);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool CustomerExists(string id)
         {
-            return _context.Customer.Any(e => e.PersonID == id);
+            return _context.Customers.Any(e => e.PersonID == id);
         }
     }
 }

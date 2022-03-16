@@ -1,25 +1,26 @@
-#nullable disable
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using MvcMovie.Models;
-namespace MvcMovie.Data{
+using MvcMovie;
+
     public class MvcMovieContext : DbContext
     {
-        public MvcMovieContext (DbContextOptions<MvcMovieContext> options)
-            : base(options)
+       protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
+            var connectionString = string.Format(@"Data Source=TUANANH\SQLEXPRESS;Initial Catalog=MNM_TKT;Integrated Security=True");
+            options.UseSqlServer(connectionString);
         }
 
-        public DbSet<MvcMovie.Models.Movie> Movie { get; set; }
-        public DbSet<MvcMovie.Models.Customer> Customer { get; set; }
-        public DbSet<MvcMovie.Models.Employee> Employee { get; set; }
-        public DbSet<MvcMovie.Models.Person> Person { get; set; }
-        public DbSet<MvcMovie.Models.Student> Student { get; set; }
-        
-    }
+        public DbSet<MvcMovie.Models.Movie> Movies { get; set; }
 
-}
-    
+        public DbSet<MvcMovie.Student> Students { get; set; }
+
+        public DbSet<MvcMovie.Person> Persons { get; set; }
+
+        public DbSet<MvcMovie.Employee> Employees { get; set; }
+
+        public DbSet<MvcMovie.Customer> Customers { get; set; }
+    }

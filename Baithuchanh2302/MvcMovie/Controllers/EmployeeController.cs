@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MvcMovie;
 using MvcMovie.Models;
+using MvcMovie.Service;
 
 
 namespace MvcMovie.Controllers
@@ -15,15 +16,24 @@ namespace MvcMovie.Controllers
     {
         private readonly MvcMovieContext _context;
         AutoGenerateKey Aukey = new AutoGenerateKey();
-        public EmployeeController(MvcMovieContext context)
+        IEmployeeService _employeeService = null;
+        List<Employee> _employee = new List<Employee>();
+
+        public EmployeeController(IEmployeeService employeeService)
         {
-            _context = context;
+            _employeeService = employeeService;
         }
+        public JsonResult Saveemployee(List<Employee> Employees)
+        {
+            _employee = _employeeService.SaveEmployees(Employees);
+            return Json(_employee);
+        }
+        
 
         // GET: Employee
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Employee.ToListAsync());
+            return View(await _context.Employees.ToListAsync());
         }
 
         // GET: Employee/Details/5
@@ -34,7 +44,7 @@ namespace MvcMovie.Controllers
                 return NotFound();
             }
 
-            var employee = await _context.Employee
+            var employee = await _context.Employees
                 .FirstOrDefaultAsync(m => m.EmployeeID == id);
             if (employee == null)
             {
@@ -48,8 +58,8 @@ namespace MvcMovie.Controllers
         public IActionResult Create()
         {
             string NewID = "";
-            var emp = _context.Employee.ToList().OrderByDescending(c => c.EmployeeID); // lay danh sach person theo ID lon nhat
-            var countEmployee = _context.Employee.Count(); 
+            var emp = _context.Employees.ToList().OrderByDescending(c => c.EmployeeID); // lay danh sach person theo ID lon nhat
+            var countEmployee = _context.Employees.Count(); 
 
             if (countEmployee == 0)
             {
@@ -88,7 +98,7 @@ namespace MvcMovie.Controllers
                 return NotFound();
             }
 
-            var employee = await _context.Employee.FindAsync(id);
+            var employee = await _context.Employees.FindAsync(id);
             if (employee == null)
             {
                 return NotFound();
@@ -139,7 +149,7 @@ namespace MvcMovie.Controllers
                 return NotFound();
             }
 
-            var employee = await _context.Employee
+            var employee = await _context.Employees
                 .FirstOrDefaultAsync(m => m.EmployeeID == id);
             if (employee == null)
             {
@@ -154,15 +164,15 @@ namespace MvcMovie.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            var employee = await _context.Employee.FindAsync(id);
-            _context.Employee.Remove(employee);
+            var employee = await _context.Employees.FindAsync(id);
+            _context.Employees.Remove(employee);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool EmployeeExists(string id)
         {
-            return _context.Employee.Any(e => e.EmployeeID == id);
+            return _context.Employees.Any(e => e.EmployeeID == id);
         }
     }
 }

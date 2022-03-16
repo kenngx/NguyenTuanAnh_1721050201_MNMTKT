@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MvcMovie;
 using MvcMovie.Models;
-
+using MvcMovie.Service;
 
 namespace MvcMovie.Controllers
 {
@@ -16,15 +16,23 @@ namespace MvcMovie.Controllers
         private readonly MvcMovieContext _context;
         AutoGenerateKey Aukey = new AutoGenerateKey();
 
-        public PersonController(MvcMovieContext context)
+       IPersonService _personService = null;
+        List<Person> _persons = new List<Person>();
+
+        public PersonController(IPersonService personService)
         {
-            _context = context;
+            _personService = personService;
+        }
+        public JsonResult SavePerson(List<Person> Persons)
+        {
+            _persons = _personService.SavePersons(Persons);
+            return Json(_persons);
         }
 
         // GET: Person
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Person.ToListAsync());
+            return View(await _context.Persons.ToListAsync());
         }
 
         // GET: Person/Details/5
@@ -35,7 +43,7 @@ namespace MvcMovie.Controllers
                 return NotFound();
             }
 
-            var person = await _context.Person
+            var person = await _context.Persons
                 .FirstOrDefaultAsync(m => m.PersonID == id);
             if (person == null)
             {
@@ -49,8 +57,8 @@ namespace MvcMovie.Controllers
         public IActionResult Create()
         {
             string NewID = "";
-            var emp = _context.Person.ToList().OrderByDescending(c => c.PersonID); // lay danh sach person theo ID lon nhat
-            var countEmployee = _context.Person.Count(); 
+            var emp = _context.Persons.ToList().OrderByDescending(c => c.PersonID); // lay danh sach person theo ID lon nhat
+            var countEmployee = _context.Persons.Count(); 
 
             if (countEmployee == 0)
             {
@@ -88,7 +96,7 @@ namespace MvcMovie.Controllers
                 return NotFound();
             }
 
-            var person = await _context.Person.FindAsync(id);
+            var person = await _context.Persons.FindAsync(id);
             if (person == null)
             {
                 return NotFound();
@@ -139,7 +147,7 @@ namespace MvcMovie.Controllers
                 return NotFound();
             }
 
-            var person = await _context.Person
+            var person = await _context.Persons
                 .FirstOrDefaultAsync(m => m.PersonID == id);
             if (person == null)
             {
@@ -154,15 +162,15 @@ namespace MvcMovie.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            var person = await _context.Person.FindAsync(id);
-            _context.Person.Remove(person);
+            var person = await _context.Persons.FindAsync(id);
+            _context.Persons.Remove(person);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool PersonExists(string id)
         {
-            return _context.Person.Any(e => e.PersonID == id);
+            return _context.Persons.Any(e => e.PersonID == id);
         }
     }
 }

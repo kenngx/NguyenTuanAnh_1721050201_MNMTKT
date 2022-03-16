@@ -1,5 +1,5 @@
 {
-  "FilePath": "c:\\Users\\ngxtu\\OneDrive\\Máy tính\\Dotnet core\\Baithuchanh2102\\BaiThucHanh\\BaiThucHanh.csproj",
+  "FilePath": "h:\\Dotnet core\\Baithuchanh2102\\BaiThucHanh\\BaiThucHanh.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "6.0",
@@ -16298,48 +16298,48 @@
   "RootNamespace": "BaiThucHanh",
   "Documents": [
     {
-      "FilePath": "c:\\Users\\ngxtu\\OneDrive\\Máy tính\\Dotnet core\\Baithuchanh2102\\BaiThucHanh\\Views\\Home\\Privacy.cshtml",
-      "TargetPath": "Views\\Home\\Privacy.cshtml",
+      "FilePath": "h:\\Dotnet core\\Baithuchanh2102\\BaiThucHanh\\Views\\Shared\\_Layout.cshtml",
+      "TargetPath": "Views\\Shared\\_Layout.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\ngxtu\\OneDrive\\Máy tính\\Dotnet core\\Baithuchanh2102\\BaiThucHanh\\Views\\_ViewStart.cshtml",
-      "TargetPath": "Views\\_ViewStart.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\ngxtu\\OneDrive\\Máy tính\\Dotnet core\\Baithuchanh2102\\BaiThucHanh\\Views\\_ViewImports.cshtml",
+      "FilePath": "h:\\Dotnet core\\Baithuchanh2102\\BaiThucHanh\\Views\\_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\ngxtu\\OneDrive\\Máy tính\\Dotnet core\\Baithuchanh2102\\BaiThucHanh\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
-      "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\ngxtu\\OneDrive\\Máy tính\\Dotnet core\\Baithuchanh2102\\BaiThucHanh\\Views\\Test2102\\Index.cshtml",
-      "TargetPath": "Views\\Test2102\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\ngxtu\\OneDrive\\Máy tính\\Dotnet core\\Baithuchanh2102\\BaiThucHanh\\Views\\Home\\Index.cshtml",
+      "FilePath": "h:\\Dotnet core\\Baithuchanh2102\\BaiThucHanh\\Views\\Home\\Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\ngxtu\\OneDrive\\Máy tính\\Dotnet core\\Baithuchanh2102\\BaiThucHanh\\Views\\Shared\\Error.cshtml",
+      "FilePath": "h:\\Dotnet core\\Baithuchanh2102\\BaiThucHanh\\Views\\Shared\\Error.cshtml",
       "TargetPath": "Views\\Shared\\Error.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\ngxtu\\OneDrive\\Máy tính\\Dotnet core\\Baithuchanh2102\\BaiThucHanh\\Views\\Test2102\\Welcome.cshtml",
+      "FilePath": "h:\\Dotnet core\\Baithuchanh2102\\BaiThucHanh\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "h:\\Dotnet core\\Baithuchanh2102\\BaiThucHanh\\Views\\_ViewStart.cshtml",
+      "TargetPath": "Views\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "h:\\Dotnet core\\Baithuchanh2102\\BaiThucHanh\\Views\\Test2102\\Welcome.cshtml",
       "TargetPath": "Views\\Test2102\\Welcome.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\ngxtu\\OneDrive\\Máy tính\\Dotnet core\\Baithuchanh2102\\BaiThucHanh\\Views\\Shared\\_Layout.cshtml",
-      "TargetPath": "Views\\Shared\\_Layout.cshtml",
+      "FilePath": "h:\\Dotnet core\\Baithuchanh2102\\BaiThucHanh\\Views\\Test2102\\Index.cshtml",
+      "TargetPath": "Views\\Test2102\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "h:\\Dotnet core\\Baithuchanh2102\\BaiThucHanh\\Views\\Home\\Privacy.cshtml",
+      "TargetPath": "Views\\Home\\Privacy.cshtml",
       "FileKind": "mvc"
     }
   ],

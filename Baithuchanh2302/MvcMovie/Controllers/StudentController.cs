@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MvcMovie;
 using MvcMovie.Models;
-
+using MvcMovie.Service;
 
 namespace MvcMovie.Controllers
 {
@@ -15,16 +15,23 @@ namespace MvcMovie.Controllers
     {
         private readonly MvcMovieContext _context;
         AutoGenerateKey Aukey = new AutoGenerateKey();
+        IStudentService _studentService = null;
+        List<Student> _students = new List<Student>();
 
-        public StudentController(MvcMovieContext context)
+        public StudentController(IStudentService studentService)
         {
-            _context = context;
+            _studentService = studentService;
+        }
+        public JsonResult SaveStudents(List<Student> students)
+        {
+            _students = _studentService.SaveStudents(students);
+            return Json(_students);
         }
 
         // GET: Student
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Student.ToListAsync());
+            return View(await _context.Students.ToListAsync());
         }
 
         // GET: Student/Details/5
@@ -35,7 +42,7 @@ namespace MvcMovie.Controllers
                 return NotFound();
             }
 
-            var student = await _context.Student
+            var student = await _context.Students
                 .FirstOrDefaultAsync(m => m.StudentID == id);
             if (student == null)
             {
@@ -49,8 +56,8 @@ namespace MvcMovie.Controllers
         public IActionResult Create()
         {
             string NewID = "";
-            var emp = _context.Student.ToList().OrderByDescending(c => c.StudentID); // lay danh sach person theo ID lon nhat
-            var countEmployee = _context.Student.Count(); 
+            var emp = _context.Students.ToList().OrderByDescending(c => c.StudentID); // lay danh sach person theo ID lon nhat
+            var countEmployee = _context.Students.Count(); 
 
             if (countEmployee == 0)
             {
@@ -88,7 +95,7 @@ namespace MvcMovie.Controllers
                 return NotFound();
             }
 
-            var student = await _context.Student.FindAsync(id);
+            var student = await _context.Students.FindAsync(id);
             if (student == null)
             {
                 return NotFound();
@@ -139,7 +146,7 @@ namespace MvcMovie.Controllers
                 return NotFound();
             }
 
-            var student = await _context.Student
+            var student = await _context.Students
                 .FirstOrDefaultAsync(m => m.StudentID == id);
             if (student == null)
             {
@@ -154,15 +161,15 @@ namespace MvcMovie.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            var student = await _context.Student.FindAsync(id);
-            _context.Student.Remove(student);
+            var student = await _context.Students.FindAsync(id);
+            _context.Students.Remove(student);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool StudentExists(string id)
         {
-            return _context.Student.Any(e => e.StudentID == id);
+            return _context.Students.Any(e => e.StudentID == id);
         }
     }
 }
